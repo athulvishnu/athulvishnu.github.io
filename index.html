@@ -8,8 +8,8 @@
 <style>
   body {
     font-family: 'Poppins', sans-serif;
-    background-color: #fff;
-    color: #292727;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     margin: 0;
     padding: 0;
     font-size: 14px;
@@ -18,20 +18,21 @@
   .container {
     max-width: 800px;
     margin: 20px auto;
-    background-color: #fff;
+    background-color: var(--primary-color);
     padding: 20px;
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 0 20px 5px rgba(63, 63, 63, 0.5); /* Shadow */
     border: 2px solid #ccc; 
     transition: background-color 0.3s ease; /* Smooth transition */
+    position: relative; /* Added position relative to allow absolute positioning of theme box */
   }
 
-  .container:hover {
-    background-color: rgba(255, 255, 255, 0.5); /* Transparent hover effect */
-  }
+ /* .container:hover {
+    background-color: rgba(255, 255, 255, 0.5); Transparent hover effect
+  }*/
 
   h1, h2, h3 {
-    color: #000;
+    color: var(--secondary-color);
     margin-top: 0; /* Remove default top margin */
     margin-bottom: 5px; /* Reduce bottom margin */
   }
@@ -59,15 +60,44 @@
     font-size: 14px; 
   }
 
-  .experience-item:hover,
+  /*.experience-item:hover,
   .skill-item:hover {
-    background-color: rgba(240, 248, 255, 0.5); /* Transparent hover effect */
+    background-color: rgba(240, 248, 255, 0.5);  Transparent hover effect 
+  }*/
+
+  .theme-box {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+
+  #theme{
+    cursor: pointer;
+  }
+
+  :root{
+    --primary-color: #fff;
+    --secondary-color: #000;
+  }
+
+  .dark-theme{
+    --primary-color:#000;
+    --secondary-color:#fff;
   }
 
 </style>
 </head>
 <body>
 <div class="container">
+
+  
+<div class="theme-box">
+  <p id="theme">Theme</p>
+</div>
+
   <header>
     <h1>Athul Vishnu</h1>
     <p>Cloud Engineer</p>
@@ -103,5 +133,15 @@
     </ul>
   </div>
 </div>
+
+<script>
+  var theme= document.getElementById("theme");
+
+  theme.onclick=function(){
+    document.body.classList.toggle("dark-theme");
+  }
+
+</script>
+
 </body>
 </html>
